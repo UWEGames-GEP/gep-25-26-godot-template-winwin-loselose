@@ -48,7 +48,7 @@ func _ready(): # Camera based Rotation
 
 func _input(event): # All major mouse and button input events
 	if event is InputEventMouseMotion:
-		aim_turn = -event.relative.x * 0.015 # animates player with mouse movement while aiming 
+		aim_turn = -event.relative.x * 0.01 # animates player with mouse movement while aiming 
 	
 	#if event.is_action_pressed("aim"): # Aim button triggers a strafe walk and camera mechanic
 		#direction = $Camroot/h.global_transform.basis.z
@@ -190,5 +190,3 @@ func _physics_process(delta):
 	animation_tree["parameters/conditions/IsNotRunning"] = !is_running
 	# Attacks and roll don't use these boolean conditions, instead
 	# they use "travel" or "start" to one-shot their animations.
-	
-	
