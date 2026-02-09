@@ -16,7 +16,6 @@ background_mode = 2
 background_color = Color(0.647059, 0.909804, 0.917647, 1)
 sky = ExtResource("1_rfwro")
 ssao_enabled = true
-sdfgi_bounce_feedback = 0.0
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0017
@@ -121,11 +120,11 @@ operation = 2
 size = Vector3(22, 10, 14)
 material = ExtResource("7_x40f1")
 
-[node name="player" parent="." instance=ExtResource("8_rfwro")]
+[node name="player" parent="." groups=["player"] instance=ExtResource("8_rfwro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27969, 24.3294, -2.3879)
 
 [node name="dirk_level" parent="." instance=ExtResource("9_wyl2q")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
-[node name="game_manager" type="Node3D" parent="."]
+[node name="game_manager" type="Node3D" parent="." groups=["game_manager"]]
 script = ExtResource("10_dtxi8")
