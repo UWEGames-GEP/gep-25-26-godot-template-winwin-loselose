@@ -28,11 +28,7 @@ func stateManager():
 	if Input.is_action_pressed("inventory"):
 		state = GameStates.INVENTORY
 		stateChanged()
-		
-		for i in inventory_visiblity.items.size():
-				if inventory_visiblity.inventory_slots.get(i).get_child_count() < 1:
-					inventory_visiblity.inventory_slots.get(i).get_child(i).get_child(0).position.x = -128
-					inventory_visiblity.inventory_slots.get(i).get_child(i).get_child(0).position.y = -128
+
 		
 func stateChanged():
 	match state:
@@ -62,5 +58,7 @@ func inventory():
 	Engine.time_scale = 0.0
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	inventory_visiblity.visual_timer = 1.6
+
+			
 	#empty lol
 	pass
