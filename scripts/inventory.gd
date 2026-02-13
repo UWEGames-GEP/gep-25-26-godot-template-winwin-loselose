@@ -49,10 +49,9 @@ func _physics_process(delta: float) -> void:
 		inventory_parent.visible = true
 		visual_timer -= 1.0 * delta
 		
-	if visual_timer <= 0:
-		inventory_parent.visible = false
-	elif game_manager.state != game_manager.GameStates.INVENTORY or game_manager.GameStates.PAUSED && visual_timer < 0:
-		inventory_parent.visible = false
+	if game_manager.state != game_manager.GameStates.INVENTORY or game_manager.GameStates.PAUSED:
+		if visual_timer < 0:
+			inventory_parent.visible = false
 		can_add_item = true
 	
 	if Input.is_action_pressed("drop"):
@@ -63,7 +62,7 @@ func addItem(itemObj, item_name: String):
 	if can_add_item:
 		if items.size() < 6:
 			itemObj.visible = false
-			#pickup_sfx.play
+			$"../pickup_sfx".play()
 			visual_timer = 1.6
 			items.append(itemObj)
 			for i in items.size():
@@ -73,6 +72,7 @@ func addItem(itemObj, item_name: String):
 					inventory_slots.get(i).add_child(instance)
 					instance.slot_num = i
 					slots_children.append(instance)
+					inventory_slots.get(i).get_child(0).anim_player.play("sylladex_move")
 					pass
 					match (item_name):
 						"red_grist": 
@@ -87,6 +87,7 @@ func addItem(itemObj, item_name: String):
 	pass
 	
 func spawnInFrontOfPlayer():
+	
 	var rng = RandomNumberGenerator.new()
 	var randomization = Vector3(rng.randf_range(0, 0.5), rng.randf_range(0, 0.5), rng.randf_range(0, 0.5))
 	newPosition = ($"../Camroot/h/spawn_point".global_position + randomization)

@@ -29,10 +29,15 @@ func stateManager():
 		state = GameStates.INVENTORY
 		stateChanged()
 		
+		for i in inventory_visiblity.items.size():
+				if inventory_visiblity.inventory_slots.get(i).get_child_count() < 1:
+					inventory_visiblity.inventory_slots.get(i).get_child(i).get_child(0).position.x = -128
+					inventory_visiblity.inventory_slots.get(i).get_child(i).get_child(0).position.y = -128
+		
 func stateChanged():
 	match state:
 		GameStates.GAMEPLAY:
-			inventory_visiblity.visual_timer = 0
+			inventory_visiblity.visual_timer = -1
 			gameplay()
 			pass
 		GameStates.PAUSED:

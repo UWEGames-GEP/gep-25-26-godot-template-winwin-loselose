@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://ln40qniw5bc3" path="res://scripts/item.gd" id="1_dn116"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dn116"]
-radius = 0.15
+radius = 0.25
 
 [sub_resource type="SphereMesh" id="SphereMesh_dn116"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_txjow"]
-radius = 0.1
+radius = 0.2
 
 [node name="RigidBody3D" type="RigidBody3D"]
 disable_mode = 2
 can_sleep = false
+freeze_mode = 1
 continuous_cd = true
 contact_monitor = true
 script = ExtResource("1_dn116")
@@ -28,11 +29,12 @@ transform = Transform3D(1.2365, 0, 0, 0, 1.2365, 0, 0, 0, 1.2365, 0, 0, 0)
 shape = SubResource("SphereShape3D_dn116")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 mesh = SubResource("SphereMesh_dn116")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_txjow")
 
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]

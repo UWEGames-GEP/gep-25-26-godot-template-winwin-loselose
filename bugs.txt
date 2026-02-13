@@ -1,0 +1,2 @@
+if items spawn on one another, doesnt spawn.
+something on pause picks up all items, like your size gets big ???  NVM IT JUST DOES IT WHENEVER?!

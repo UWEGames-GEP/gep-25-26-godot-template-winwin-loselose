@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dppx0wnjth57t"]
+[gd_scene load_steps=17 format=3 uid="uid://dppx0wnjth57t"]
 
 [ext_resource type="Script" uid="uid://dd8jrwdr6f7ac" path="res://nodes/icon.gd" id="1_yxp0c"]
 [ext_resource type="Texture2D" uid="uid://bgh81vmh2eao5" path="res://textures/sylladex.png" id="2_yxp0c"]
@@ -27,6 +27,43 @@ modulate_color = Color(0.625597, 0.625597, 0.625597, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yrsg3"]
 texture = ExtResource("2_yxp0c")
+
+[sub_resource type="Animation" id="Animation_aa4oc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_yxp0c"]
+resource_name = "sylladex_move"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-256, -192), Vector2(0, -192), Vector2(0, -126), Vector2(-256, -126)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0unh1"]
+_data = {
+&"RESET": SubResource("Animation_aa4oc"),
+&"sylladex_move": SubResource("Animation_yxp0c")
+}
 
 [node name="Icon" type="Control"]
 layout_mode = 3
@@ -64,5 +101,11 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_bfgga")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_kje2o")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_7ofja")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yrsg3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0unh1")
+}
+speed_scale = 3.0
 
 [connection signal="pressed" from="TextureRect" to="." method="_on_texture_rect_pressed"]

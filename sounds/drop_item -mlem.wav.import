@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ckrcbscxhuf21"
+path="res://.godot/imported/drop_item -mlem.wav-c7ec1ea82044ae62de4c320e9655359c.sample"
+
+[deps]
+
+source_file="res://sounds/drop_item -mlem.wav"
+dest_files=["res://.godot/imported/drop_item -mlem.wav-c7ec1ea82044ae62de4c320e9655359c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

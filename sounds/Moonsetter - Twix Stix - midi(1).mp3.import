@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cpgx7p31nc3qg"
+path="res://.godot/imported/Moonsetter - Twix Stix - midi(1).mp3-2847964ca9d92b7005eb2ee3ed690bd8.mp3str"
+
+[deps]
+
+source_file="res://sounds/Moonsetter - Twix Stix - midi(1).mp3"
+dest_files=["res://.godot/imported/Moonsetter - Twix Stix - midi(1).mp3-2847964ca9d92b7005eb2ee3ed690bd8.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
