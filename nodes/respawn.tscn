@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh3gkfxfx3x55"]
+
+[ext_resource type="Script" uid="uid://ckocnceil3q5d" path="res://scripts/respawn.gd" id="1_ci2bj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ww4ox"]
+
+[node name="Respawn" type="StaticBody3D"]
+script = ExtResource("1_ci2bj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ww4ox")
+
+[connection signal="child_entered_tree" from="CollisionShape3D" to="." method="_on_collision_shape_3d_child_entered_tree"]

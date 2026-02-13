@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://spyu4a2e0y5w"]
+
+[ext_resource type="FontFile" uid="uid://di4gdrlt20q4o" path="res://courbd(1).ttf" id="1_6qegq"]
+[ext_resource type="Texture2D" uid="uid://d0wxs5b721nro" path="res://textures/button.png" id="1_hjn8r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ju8y4"]
+texture = ExtResource("1_hjn8r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_11awm"]
+texture = ExtResource("1_hjn8r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4luo7"]
+texture = ExtResource("1_hjn8r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugfru"]
+texture = ExtResource("1_hjn8r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qe7yt"]
+texture = ExtResource("1_hjn8r")
+
+[resource]
+default_font = ExtResource("1_6qegq")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_ju8y4")
+Button/styles/focus = SubResource("StyleBoxTexture_11awm")
+Button/styles/hover = SubResource("StyleBoxTexture_4luo7")
+Button/styles/normal = SubResource("StyleBoxTexture_ugfru")
+Button/styles/pressed = SubResource("StyleBoxTexture_qe7yt")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ngecyo0pmaed"]
+[gd_scene load_steps=13 format=3 uid="uid://ngecyo0pmaed"]
 
 [ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="1_rfwro"]
 [ext_resource type="Material" uid="uid://c1u020xb37y6n" path="res://addons/ThirdPersonTemplate/Environments/Materials/Blue.material" id="2_wyl2q"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://d4h2x55pwh6wv" path="res://nodes/dirk_level.tscn" id="9_wyl2q"]
 [ext_resource type="Script" uid="uid://cpr2hhtswc8p8" path="res://scripts/game_manager.gd" id="10_dtxi8"]
 [ext_resource type="PackedScene" uid="uid://b4exvbnn4466x" path="res://nodes/itemspawner.tscn" id="11_iywyu"]
-[ext_resource type="PackedScene" uid="uid://dfo3mjnk2g45" path="res://nodes/menu.tscn" id="12_sc53d"]
 
 [sub_resource type="Environment" id="Environment_qyvd4"]
 background_mode = 2
@@ -122,7 +121,7 @@ operation = 2
 size = Vector3(22, 10, 14)
 material = ExtResource("7_x40f1")
 
-[node name="player" parent="." instance=ExtResource("8_rfwro")]
+[node name="player" parent="." groups=["player"] instance=ExtResource("8_rfwro")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.27969, 24.3294, -2.3879)
 
 [node name="dirk_level" parent="." instance=ExtResource("9_wyl2q")]
@@ -133,5 +132,3 @@ script = ExtResource("10_dtxi8")
 
 [node name="Itemspawner" parent="." instance=ExtResource("11_iywyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4305, 25.4085, -5.90092)
-
-[node name="Menu" parent="." instance=ExtResource("12_sc53d")]

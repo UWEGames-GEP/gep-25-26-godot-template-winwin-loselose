@@ -32,6 +32,15 @@ enabled=PackedStringArray()
 
 player=""
 game_manager=""
+inventory=""
+inventory_parent=""
+stash=""
+p_menu=""
+cam_rot=""
+
+[gui]
+
+theme/custom="uid://spyu4a2e0y5w"
 
 [input]
 

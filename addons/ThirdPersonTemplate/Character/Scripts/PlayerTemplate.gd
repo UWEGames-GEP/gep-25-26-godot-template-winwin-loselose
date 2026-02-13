@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var PlayerAnimationTree = $AnimationTree.get_path()
 @onready var animation_tree = get_node(PlayerAnimationTree)
 @onready var playback = animation_tree.get("parameters/playback")
-
+@onready var dirk_model = $Dirk_Strider
 # Allows to pick your chracter's mesh from the inspector
 @export_node_path("Node3D") var PlayerCharacterMesh: NodePath
 @onready var player_mesh = get_node(PlayerCharacterMesh)
@@ -49,6 +49,7 @@ func _ready(): # Camera based Rotation
 func _input(event): # All major mouse and button input events
 	if event is InputEventMouseMotion:
 		aim_turn = -event.relative.x * 0.01 # animates player with mouse movement while aiming 
+	
 	
 	#if event.is_action_pressed("aim"): # Aim button triggers a strafe walk and camera mechanic
 		#direction = $Camroot/h.global_transform.basis.z
@@ -95,6 +96,7 @@ func sprint_and_roll():
 			#playback.travel(bigattack_node_name) #Add and Change this animation node for a different attack
 	
 func _physics_process(delta):
+	dirk_model.rotation.y = $Camroot/h.rotation.y
 	#rollattack()
 	#bigattack()
 	#attack1()

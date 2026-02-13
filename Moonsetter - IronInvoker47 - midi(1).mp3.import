@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ci7u86eyfhoa0"
+path="res://.godot/imported/Moonsetter - IronInvoker47 - midi(1).mp3-964155115d0088a4e90a3dc178a407b1.mp3str"
+
+[deps]
+
+source_file="res://Moonsetter - IronInvoker47 - midi(1).mp3"
+dest_files=["res://.godot/imported/Moonsetter - IronInvoker47 - midi(1).mp3-964155115d0088a4e90a3dc178a407b1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

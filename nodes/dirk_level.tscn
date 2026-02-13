@@ -3,3 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://cg1suj846ta42" path="res://3d_models/dirk_level.glb" id="1_d1smu"]
 
 [node name="dirk_level" instance=ExtResource("1_d1smu")]
+
+[node name="StaticBody3D" parent="stairs" index="0"]
+collision_layer = 255
+collision_mask = 255
+
+[node name="StaticBody3D" parent="antenna" index="0"]
+collision_layer = 255
+collision_mask = 255
+
+[node name="StaticBody3D" parent="building" index="0"]
+collision_layer = 255
+collision_mask = 255
+
+[node name="StaticBody3D" parent="legs_branch" index="0"]
+collision_layer = 255
+collision_mask = 255

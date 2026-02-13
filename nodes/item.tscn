@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b586mg7upq7cm"]
+
+[ext_resource type="Script" uid="uid://ln40qniw5bc3" path="res://scripts/item.gd" id="1_dn116"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dn116"]
+radius = 0.15
+
+[sub_resource type="SphereMesh" id="SphereMesh_dn116"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_txjow"]
+radius = 0.1
+
+[node name="RigidBody3D" type="RigidBody3D"]
+disable_mode = 2
+can_sleep = false
+continuous_cd = true
+contact_monitor = true
+script = ExtResource("1_dn116")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0352018, 0)
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.2365, 0, 0, 0, 1.2365, 0, 0, 0, 1.2365, 0, 0, 0)
+shape = SubResource("SphereShape3D_dn116")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_dn116")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_txjow")
+
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfo3mjnk2g45"]
+
+[ext_resource type="Script" uid="uid://c2e01c6k167vg" path="res://scripts/menumanager.gd" id="1_01rij"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_01rij")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." groups=["p_menu"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -60.0
+offset_right = 90.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(90, 60)
+alignment = 1
+
+[node name="play_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "play"
+
+[node name="options_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "options"
+
+[node name="quit_btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "quit
+"
+
+[connection signal="pressed" from="VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/options_btn" to="." method="_on_options_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
