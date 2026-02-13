@@ -27,6 +27,7 @@ var attack2_node_name = "Attack2"
 var bigattack_node_name = "BigAttack"
 var rollattack_node_name = "RollAttack"
 
+var game_manager
 # Condition States
 var is_attacking = bool()
 var is_rolling = bool()
@@ -45,6 +46,7 @@ var acceleration = int()
 
 func _ready(): # Camera based Rotation
 	direction = Vector3.BACK.rotated(Vector3.UP, $Camroot/h.global_transform.basis.get_euler().y)
+	game_manager = get_tree().get_first_node_in_group("game_manager")
 
 func _input(event): # All major mouse and button input events
 	if event is InputEventMouseMotion:

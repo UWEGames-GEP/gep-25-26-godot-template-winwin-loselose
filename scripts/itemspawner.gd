@@ -13,4 +13,4 @@ func _physics_process(delta: float) -> void:
 		#instance.set_position(self.global_position)
 		add_child(instance)
 		var rng = RandomNumberGenerator.new()
-		timer = rng.randf_range(4.0, 12.0)
+		timer = rng.randf_range(1.0, 3.0)

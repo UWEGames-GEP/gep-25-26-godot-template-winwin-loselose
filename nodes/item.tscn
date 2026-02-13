@@ -14,8 +14,6 @@ radius = 0.2
 disable_mode = 2
 can_sleep = false
 freeze_mode = 1
-continuous_cd = true
-contact_monitor = true
 script = ExtResource("1_dn116")
 
 [node name="Area3D" type="Area3D" parent="."]

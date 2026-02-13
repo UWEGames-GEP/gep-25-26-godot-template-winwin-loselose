@@ -89,7 +89,7 @@ func addItem(itemObj, item_name: String):
 func spawnInFrontOfPlayer():
 	
 	var rng = RandomNumberGenerator.new()
-	var randomization = Vector3(rng.randf_range(0, 0.5), rng.randf_range(0, 0.5), rng.randf_range(0, 0.5))
+	var randomization = Vector3(rng.randf_range(0.1, 0.5), rng.randf_range(0.1, 0.5), rng.randf_range(0.1, 0.5))
 	newPosition = ($"../Camroot/h/spawn_point".global_position + randomization)
 
 func removeItem():
@@ -139,4 +139,4 @@ func removeSelectedItem(itemToRemove: int):
 		items.remove_at(itemToRemove)
 		slots_children.get(itemToRemove).queue_free()
 		slots_children.remove_at(itemToRemove)
-		items.sort()
+		#items.sort()

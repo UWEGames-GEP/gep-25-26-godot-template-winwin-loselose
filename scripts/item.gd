@@ -23,13 +23,3 @@ func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_inde
 			self.visible = false
 			self.reparent(get_tree().get_first_node_in_group("stash"))
 	pass # Replace with function body.
-
-
-func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
-	if inventory != null && body.is_in_group("player"):
-		if inventory.can_add_item:
-			inventory.addItem(self, self.get_name())
-			inventory_parent.visible = true
-			self.visible = false
-			self.reparent(get_tree().get_first_node_in_group("stash"))
-	pass # Replace with function body.

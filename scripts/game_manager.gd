@@ -55,7 +55,7 @@ func paused():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pass
 func inventory():
-	Engine.time_scale = 0.0
+	Engine.time_scale = 0.1
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	inventory_visiblity.visual_timer = 1.6
 

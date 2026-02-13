@@ -14,12 +14,14 @@ var v_sensitivity = .01
 var h_acceleration = 10
 var v_acceleration = 10
 var joyview = Vector2()
+var game_manager
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	game_manager = get_tree().get_first_node_in_group("game_manager")
 	
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && game_manager.state == game_manager.GameStates.GAMEPLAY:
 	
 		camrot_h += -event.relative.x * h_sensitivity * 0.65
 		camrot_v += event.relative.y * v_sensitivity * 0.65
