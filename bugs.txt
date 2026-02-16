@@ -1,0 +1,25 @@
+when selecting item, it drops it fucking weird <- it is a time bug, find a solution if you really care. just use time
+
+TO DO -====
+bug fix for balls spawn, make a hitbox face direction of the ball spawn position from the player position as an anchor. <- use rotation, if collides, repeat until it can find a new place to spawn it based on randomization 
+
+make it so there is a shop ui when you press E to interact
+make it so you cannot buy with shop unless you have the money
+tells you that you cannot afford if you cant purchase
+if you press a button on the shop, it spawns the item in if you can afford it
+make 3 items to buy
+make grist have pickup sound
+make grist have a counter in top of screen
+make counter come down when you pick grist up
+make sylladex cards show the type if you pick up item
+make random grist spawn, spawns random value and colour
+
+
+if left click, place/throw
+if right click, interact item
+if press E, interact
+
+make item into an item type, based on a ENUM
+
+punch designix for unlocking more items <- EXTRA
+alchemiter <- use grist to make items //

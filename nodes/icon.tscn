@@ -1,0 +1,111 @@
+[gd_scene load_steps=17 format=3 uid="uid://cminkyjbgdh1b"]
+
+[ext_resource type="Script" uid="uid://c1n07s5qg3o5w" path="res://nodes/icon.gd" id="1_yxp0c"]
+[ext_resource type="Texture2D" path="res://textures/sylladex.png" id="2_yxp0c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aa4oc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0unh1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jijn7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8k5j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xmqs5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_30mew"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxp0c"]
+texture = ExtResource("2_yxp0c")
+modulate_color = Color(0.625597, 0.625597, 0.625597, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bfgga"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kje2o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ofja"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yrsg3"]
+texture = ExtResource("2_yxp0c")
+
+[sub_resource type="Animation" id="Animation_aa4oc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, -128)]
+}
+
+[sub_resource type="Animation" id="Animation_yxp0c"]
+resource_name = "sylladex_move"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-256, -192), Vector2(0, -192), Vector2(0, -126), Vector2(-256, -126)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0unh1"]
+_data = {
+&"RESET": SubResource("Animation_aa4oc"),
+&"sylladex_move": SubResource("Animation_yxp0c")
+}
+
+[node name="Icon" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_yxp0c")
+
+[node name="TextureRect" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_aa4oc")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_0unh1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jijn7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_i8k5j")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xmqs5")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_30mew")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yxp0c")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_bfgga")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kje2o")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_7ofja")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yrsg3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0unh1")
+}
+speed_scale = 3.0
+
+[connection signal="pressed" from="TextureRect" to="." method="_on_texture_rect_pressed"]

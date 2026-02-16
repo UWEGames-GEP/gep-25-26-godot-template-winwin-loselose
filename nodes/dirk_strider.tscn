@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://db21nmv414bmy"]
+
+[ext_resource type="PackedScene" uid="uid://dur5iulmdoyvj" path="res://3d_models/Dirk_Strider.fbx" id="1_q2c7u"]
+[ext_resource type="Texture2D" uid="uid://c21h4jkbqoirq" path="res://textures/Dirk_Casual.png" id="2_nlm2r"]
+[ext_resource type="Texture2D" uid="uid://jj8rf7s5bpva" path="res://textures/Dirk_Mouth.png" id="3_uyi8d"]
+[ext_resource type="Texture2D" uid="uid://lcl6d8ln7lyq" path="res://textures/Dirk_Eyes.png" id="4_8jwdc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_huo6p"]
+albedo_texture = ExtResource("2_nlm2r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y72qt"]
+albedo_texture = ExtResource("2_nlm2r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qpmu"]
+albedo_texture = ExtResource("3_uyi8d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4q76e"]
+albedo_texture = ExtResource("4_8jwdc")
+
+[node name="Dirk_Strider" instance=ExtResource("1_q2c7u")]
+
+[node name="dirk" parent="gg/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_huo6p")
+
+[node name="dirk_casual_001" parent="gg/Skeleton3D" index="1"]
+material_override = SubResource("StandardMaterial3D_y72qt")
+
+[node name="mouth_neutral" parent="gg/Skeleton3D" index="2"]
+material_override = SubResource("StandardMaterial3D_5qpmu")
+
+[node name="brows_neutral" parent="gg/Skeleton3D" index="3"]
+material_override = SubResource("StandardMaterial3D_4q76e")
