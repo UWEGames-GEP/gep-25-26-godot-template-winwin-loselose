@@ -19,26 +19,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -60.0
-offset_right = 90.0
-offset_bottom = 60.0
+offset_left = -70.0
+offset_top = -50.0
+offset_right = 70.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-pivot_offset = Vector2(90, 60)
+pivot_offset = Vector2(70, 50)
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="play_btn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "play"
 
 [node name="options_btn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "options"
 
 [node name="quit_btn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 text = "quit
 "
 

@@ -37,6 +37,13 @@ func checker(check_num: int):
 				if inventory_slots.get(check_num).get_child_count() > 0:
 					game_manager.pickup_sfx.play() # change to equip sfx
 					held_item = items.get(check_num)
+					match (held_item):
+						"unbreakable_katana":
+							inventory_slots.get(check_num).get_child(0).icon_tex.texture = inventory_slots.get(check_num).get_child(0).katana_texture
+						"lil_cal":
+							inventory_slots.get(check_num).get_child(0).icon_tex.texture = inventory_slots.get(check_num).get_child(0).lil_cal_texture
+						"lil_seb":
+							inventory_slots.get(check_num).get_child(0).icon_tex.texture = inventory_slots.get(check_num).get_child(0).lil_seb_texture
 					inventory_slots.get(check_num).get_child(0).anim_player.play("sylladex_move")
 					held_item.reparent(item_holder)
 					held_item.get_child(0).set_monitoring(false)
@@ -123,7 +130,6 @@ func _physics_process(delta: float) -> void:
 		if visual_timer < 0:
 			inventory_parent.visible = false
 		can_add_item = true
-	
 
 func addItem(itemObj, item_name: String):
 	if can_add_item:
@@ -132,25 +138,32 @@ func addItem(itemObj, item_name: String):
 			game_manager.pickup_sfx.play()
 			visual_timer = 1.6
 			items.append(itemObj)
+			var instance
 			for i in items.size():
 				if inventory_slots.get(i).get_child_count() < 1:
-					var instance = sylladex_item.instantiate()
+					instance = sylladex_item.instantiate()
 					#instance.set_position(self.global_position)
 					inventory_slots.get(i).add_child(instance)
 					instance.slot_num = i
 					slots_children.append(instance)
 					inventory_slots.get(i).get_child(0).anim_player.play("sylladex_move")
 					pass
-					match (item_name):
-						"red_grist": 
-							#change colour of grist here
+					match (items.get(i).obj_name):
+						"unbreakable_katana": 
+							instance.icon_tex.texture = instance.katana_texture
+									#change colour of grist here
 							pass
-						"orange_grist":
-							#change colour of grist here
+						"lil_cal":
+							instance.icon_tex.texture = instance.lil_cal_texture
+									#change colour of grist here
 							pass
-						"green_grist":
-							#change colour of girs there
+						"lil_seb":
+							instance.icon_tex.texture = instance.lil_seb_texture
+									#change colour of girs there
 							pass
+					#instance = null
+			
+			instance = null
 	pass
 	
 func spawnInFrontOfPlayer():
@@ -185,7 +198,8 @@ func remove_held_item():
 			if slots_children.get(selected_card) != null:
 				slots_children.get(selected_card).queue_free()
 				slots_children.remove_at(selected_card)
-		items.sort()
+			break
+		#items.sort()
 	else:
 		removeItem()
 	
@@ -216,7 +230,7 @@ func removeItem():
 			if slots_children.get(i) != null:
 				slots_children.get(i).queue_free()
 				slots_children.remove_at(i)
-	items.sort()
+	#items.sort()
 
 func removeSelectedUIItem(itemToRemove: int):
 	#play drop sfx

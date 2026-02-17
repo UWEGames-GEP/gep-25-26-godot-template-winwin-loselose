@@ -70,5 +70,11 @@ func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_inde
 			inventory.addItem(self, self.get_name())
 			inventory_parent.visible = true
 			self.visible = false
+			if obj_name != "lil_seb":
+				self.get_child(1).disabled = true
+				self.get_child(0).get_child(0).disabled = true
 			self.reparent(get_tree().get_first_node_in_group("stash"))
+			if obj_name != "lil_seb":
+				self.get_child(1).disabled = false
+				self.get_child(0).get_child(0).disabled = false
 	pass # Replace with function body.
