@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://casdah7m37my5"]
 
-[ext_resource type="Script" uid="uid://dvwtqyxshkfuu" path="res://nodes/grist.gd" id="1_vil8i"]
+[ext_resource type="Script" uid="uid://dvwtqyxshkfuu" path="res://scripts/grist.gd" id="1_vil8i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dn116"]
 radius = 0.25

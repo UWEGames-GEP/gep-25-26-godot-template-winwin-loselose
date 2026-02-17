@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckeoo6d8vr44d"]
+
+[ext_resource type="Script" uid="uid://cbux6x6xxys6c" path="res://scripts/item.gd" id="1_0x0w4"]
+[ext_resource type="PackedScene" uid="uid://dcwulbtyp7mmp" path="res://nodes/lil_seb_model.tscn" id="3_xmuqx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0x0w4"]
+radius = 0.0769064
+height = 0.360454
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rvmg7"]
+radius = 0.0810636
+height = 0.425571
+
+[sub_resource type="SphereMesh" id="SphereMesh_dn116"]
+
+[node name="lil_seb" type="CharacterBody3D"]
+disable_mode = 2
+script = ExtResource("1_0x0w4")
+obj_name = "lil_seb"
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0352018, 0)
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.2365, 0, 0, 0, 1.2365, 0, 0, 0, 1.2365, 0, -0.0893844, 0)
+shape = SubResource("CapsuleShape3D_0x0w4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0474671, 0)
+shape = SubResource("CapsuleShape3D_rvmg7")
+
+[node name="lil_seb2" parent="." instance=ExtResource("3_xmuqx")]
+transform = Transform3D(0.1, 0, 2.66454e-15, 0, 0.1, 0, -2.66454e-15, 0, 0.1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_dn116")
+skeleton = NodePath("../..")
+
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]

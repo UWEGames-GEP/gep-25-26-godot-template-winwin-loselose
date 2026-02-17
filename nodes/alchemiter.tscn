@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckkrdc5ay5slx"]
 
-[ext_resource type="Script" uid="uid://b11d337of1adv" path="res://nodes/alchimeter.gd" id="1_4q4xk"]
+[ext_resource type="Script" uid="uid://b11d337of1adv" path="res://scripts/alchimeter.gd" id="1_4q4xk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rhxol"]
 

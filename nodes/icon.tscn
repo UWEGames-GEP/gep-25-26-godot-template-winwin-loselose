@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://cminkyjbgdh1b"]
 
-[ext_resource type="Script" uid="uid://c1n07s5qg3o5w" path="res://nodes/icon.gd" id="1_yxp0c"]
-[ext_resource type="Texture2D" path="res://textures/sylladex.png" id="2_yxp0c"]
+[ext_resource type="Script" uid="uid://c1n07s5qg3o5w" path="res://scripts/icon.gd" id="1_yxp0c"]
+[ext_resource type="Texture2D" uid="uid://bgh81vmh2eao5" path="res://textures/sylladex.png" id="2_yxp0c"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aa4oc"]
 
@@ -66,6 +66,7 @@ _data = {
 }
 
 [node name="Icon" type="Control"]
+z_index = 5
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -78,6 +79,7 @@ size_flags_horizontal = 4
 script = ExtResource("1_yxp0c")
 
 [node name="TextureRect" type="Button" parent="."]
+z_index = 5
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

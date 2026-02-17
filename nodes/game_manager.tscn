@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpo1sqdrbia2l"]
+
+[ext_resource type="Script" uid="uid://cx78ei2m5smoe" path="res://scripts/game_manager.gd" id="1_jod4h"]
+[ext_resource type="AudioStream" uid="uid://cga1kpbcfu05j" path="res://sounds/pickup - mlem.wav" id="2_o4i5i"]
+[ext_resource type="AudioStream" uid="uid://ckrcbscxhuf21" path="res://sounds/drop_item -mlem.wav" id="3_hc161"]
+
+[node name="game_manager" type="Node3D" groups=["game_manager"]]
+script = ExtResource("1_jod4h")
+
+[node name="pickup_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_o4i5i")
+
+[node name="drop_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hc161")

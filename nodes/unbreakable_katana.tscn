@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://n3u8tfa87hw4"]
+
+[ext_resource type="Script" uid="uid://cbux6x6xxys6c" path="res://scripts/item.gd" id="1_dn116"]
+[ext_resource type="PackedScene" uid="uid://by6jbd4neax3b" path="res://nodes/unbreakable_katana_model.tscn" id="2_041ya"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bucmq"]
+size = Vector3(0.386454, 0.12207, 0.114731)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rdllj"]
+size = Vector3(0.27478, 0.108978, 0.118904)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dn116"]
+
+[node name="unbreakable_katana" type="RigidBody3D"]
+disable_mode = 2
+can_sleep = false
+freeze_mode = 1
+script = ExtResource("1_dn116")
+obj_name = "unbreakable_katana"
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0352018, 0)
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.2365, 0, 0, 0, 1.2365, 0, 0, 0, 1.2365, -0.122688, -0.00543387, 0.00323576)
+shape = SubResource("BoxShape3D_bucmq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177258, 0.0251312, -0.00187302)
+shape = SubResource("BoxShape3D_rdllj")
+
+[node name="unbreakable_katana" parent="." instance=ExtResource("2_041ya")]
+transform = Transform3D(-0.235611, 0, 2.66699e-08, 0, 0.345798, 0, -2.05978e-08, 0, -0.305067, -0.478767, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_dn116")
+skeleton = NodePath("../..")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]

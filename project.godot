@@ -40,6 +40,8 @@ cam_rot=""
 item_holder=""
 grist=""
 alchemiter=""
+shop_ui=""
+menu=""
 
 [gui]
 

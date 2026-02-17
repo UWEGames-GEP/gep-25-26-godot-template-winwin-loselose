@@ -7,29 +7,34 @@ var inventory_visiblity
 var state: GameStates
 var grist: int
 var state_changing = false
+@onready var pickup_sfx = $pickup_sfx
+@onready var drop_sfx = $drop_sfx
+
+var menu = load("res://nodes/menu.tscn")
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("pause"):
+		var instance = menu.instantiate()	
+		add_child(instance)
+		state = GameStates.PAUSED
+		stateChanged()
+		
+	if Input.is_action_just_pressed("return"):
+		state = GameStates.GAMEPLAY
+		if get_tree().get_first_node_in_group("shop_ui") != null:
+			get_tree().get_first_node_in_group("shop_ui").queue_free()
+		if get_tree().get_first_node_in_group("menu") != null:
+			get_tree().get_first_node_in_group("menu").queue_free()
+		stateChanged()
+		
+	if Input.is_action_just_pressed("inventory"):
+		state = GameStates.INVENTORY
+		stateChanged()
+
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	inventory_visiblity = get_tree().get_first_node_in_group("inventory")
 
-func _process(delta: float) -> void:
-	stateManager()
-
-func stateManager():
-#checks for player input, changes the state and then runs a bool to ensure the statechange doesnt loop
-	if Input.is_action_pressed("pause"):
-		state = GameStates.PAUSED
-		stateChanged()
-		
-	if Input.is_action_pressed("return"):
-		state = GameStates.GAMEPLAY
-		stateChanged()
-		
-	if Input.is_action_pressed("inventory"):
-		state = GameStates.INVENTORY
-		stateChanged()
-
-		
 func stateChanged():
 	match state:
 		GameStates.GAMEPLAY:

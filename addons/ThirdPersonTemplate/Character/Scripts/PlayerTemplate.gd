@@ -54,6 +54,7 @@ func _input(event): # All major mouse and button input events
 		#direction = $Camroot/h.global_transform.basis.z
 
 func sprint_and_roll():
+	
 ## Dodge button input with dash and interruption to basic actions
 	if Input.is_action_just_pressed("sprint"):
 		if !roll_node_name in playback.get_current_node() and !jump_node_name in playback.get_current_node() and !bigattack_node_name in playback.get_current_node():
@@ -161,7 +162,8 @@ func _physics_process(delta):
 #		player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, $Camroot/h.rotation.y, delta * angular_acceleration)
 
 #	else: # Normal turn movement mechanics
-	player_mesh.rotation.y = lerp_angle(player_mesh.rotation.y, atan2(direction.x, direction.z) - rotation.y, delta * angular_acceleration)
+	#$Dirk_Strider.rotation.y = direction.y
+	$Dirk_Strider.rotation.y = lerp_angle($Dirk_Strider.rotation.y, atan2(direction.x, direction.z) - rotation.y, delta * angular_acceleration)
 	
 	# Movment mechanics with limitations during rolls/attacks
 	if ((is_attacking == true) or (is_rolling == true)): 

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyshf35q0kyq4"]
+
+[ext_resource type="Script" uid="uid://cbux6x6xxys6c" path="res://scripts/item.gd" id="1_dwxv3"]
+[ext_resource type="Texture2D" uid="uid://bcqw17mcvrhnv" path="res://textures/Cal.png" id="2_dwxv3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0x0w4"]
+radius = 0.0769064
+height = 0.360454
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rvmg7"]
+radius = 0.0810636
+height = 0.425571
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbqag"]
+albedo_texture = ExtResource("2_dwxv3")
+
+[sub_resource type="SphereMesh" id="SphereMesh_dn116"]
+
+[node name="lil_cal" type="RigidBody3D"]
+disable_mode = 2
+script = ExtResource("1_dwxv3")
+obj_name = "lil_cal"
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0352018, 0)
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.2365, 0, 0, 0, 1.2365, 0, 0, 0, 1.2365, 0, -0.0893844, 0)
+shape = SubResource("CapsuleShape3D_0x0w4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0474671, 0)
+shape = SubResource("CapsuleShape3D_rvmg7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_tbqag")
+mesh = SubResource("SphereMesh_dn116")
+skeleton = NodePath("../..")
+
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]

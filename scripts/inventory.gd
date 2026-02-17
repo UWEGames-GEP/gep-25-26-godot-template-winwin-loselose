@@ -9,8 +9,6 @@ var items: Array #nodes
 @export var can_add_item = true
 var to_destroy #node
 var visual_timer = 1.6
-@onready var pickup_sfx
-@onready var drop_sfx
 var newPosition
 var newRotation
 @onready var cam_rotation = $"../Camroot/h".rotation
@@ -26,25 +24,18 @@ func _ready() -> void:
 	for i in inventory_parent.get_child_count():
 		inventory_slots.push_front(inventory_parent.get_child(i))
 	pass
-#[SerializeField] bool can_add_item = false;
-#[SerializeField] GameObject inventory_parent;
-#[SerializeField] private GameObject sylladex_item;
-#public List<GameObject> items = new List<GameObject>();
-#public List<GameObject> inventory_slots = new List<GameObject>();
-#public List<GameObject> slots_children = new List<GameObject>();
+
 
 func checker(check_num: int):
 	if items.size() < 6:
-			#itemObj.visible = false
-			$"../pickup_sfx".play() # change to equip sfx
 			visual_timer = 1.6
-			#items.append(itemObj)
 			for i in items.size():
 				if inventory_slots.get(i).get_child_count() <= 1:
 					items.get(i).reparent(get_tree().get_first_node_in_group("stash"))
 					items.get(i).visible = false
 					items.get(i).get_child(0).set_monitoring(true)
 				if inventory_slots.get(check_num).get_child_count() > 0:
+					game_manager.pickup_sfx.play() # change to equip sfx
 					held_item = items.get(check_num)
 					inventory_slots.get(check_num).get_child(0).anim_player.play("sylladex_move")
 					held_item.reparent(item_holder)
@@ -88,15 +79,15 @@ func _input(event: InputEvent) -> void:
 		if !is_selected_card_empty:
 			selected_card = 5
 		pass
-	if Input.is_action_pressed("drop"):
+	if Input.is_action_just_pressed("drop"):
 		remove_held_item() #push it into the different script
 		pass
-	if Input.is_action_pressed("interact"):
+	if Input.is_action_just_pressed("interact"):
 		if raycast.is_colliding() && raycast.get_collider() != null:
 			print(raycast.get_collider())
 			if raycast.get_collider().is_in_group("alchemiter"):
 				#check if currency is enough
-				raycast.get_collider().purchase()
+				raycast.get_collider().view_shop()
 				##open shop ui, for now. spend money spawn item
 				
 				pass
@@ -138,7 +129,7 @@ func addItem(itemObj, item_name: String):
 	if can_add_item:
 		if items.size() < 6:
 			itemObj.visible = false
-			$"../pickup_sfx".play()
+			game_manager.pickup_sfx.play()
 			visual_timer = 1.6
 			items.append(itemObj)
 			for i in items.size():
@@ -163,7 +154,7 @@ func addItem(itemObj, item_name: String):
 	pass
 	
 func spawnInFrontOfPlayer():
-	
+	game_manager.drop_sfx.play()
 	var rng = RandomNumberGenerator.new()
 	var randomization = Vector3(rng.randf_range(0.1, 0.5), rng.randf_range(0.1, 0.5), rng.randf_range(0.1, 0.5))
 	newPosition = ($"../Camroot/h/spawn_point".global_position + randomization)
@@ -181,11 +172,13 @@ func remove_held_item():
 			item_to_remove = items.get(selected_card)
 			items.remove_at(selected_card)
 			item_to_remove.visible = true
-			item_to_remove.freeze = true
+			if item_to_remove.obj_name != "lil_seb":
+				item_to_remove.freeze = true
 			item_to_remove.rotation = cam_rotation
 			item_to_remove.reparent(get_tree().root)
 			item_to_remove.position = newPosition
-			item_to_remove.freeze = false
+			if item_to_remove.obj_name != "lil_seb":
+				item_to_remove.freeze = false
 
 			break
 		for i in slots_children.size():
@@ -210,11 +203,13 @@ func removeItem():
 			item_to_remove = items.get(i)
 			items.remove_at(i)
 			item_to_remove.visible = true
-			item_to_remove.freeze = true
+			if item_to_remove.obj_name != "lil_seb":
+				item_to_remove.freeze = true
 			item_to_remove.rotation = cam_rotation
 			item_to_remove.reparent(get_tree().root)
 			item_to_remove.position = newPosition
-			item_to_remove.freeze = false
+			if item_to_remove.obj_name != "lil_seb":
+				item_to_remove.freeze = false
 
 			break
 		for i in slots_children.size():
@@ -233,12 +228,13 @@ func removeSelectedUIItem(itemToRemove: int):
 		items.get(itemToRemove).reparent(get_tree().root)
 	
 		items.get(itemToRemove).visible = true
-		items.get(itemToRemove).freeze = true
+		if items.get(itemToRemove).obj_name != "lil_seb":
+			items.get(itemToRemove).freeze = true
 		items.get(itemToRemove).get_child(0).set_monitoring(true)
 		items.get(itemToRemove).position = newPosition
 		items.get(itemToRemove).rotation = cam_rotation
-		
-		items.get(itemToRemove).freeze = false
+		if items.get(itemToRemove).obj_name != "lil_seb":
+			items.get(itemToRemove).freeze = false
 		
 		
 		items.remove_at(itemToRemove)
