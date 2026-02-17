@@ -7,7 +7,8 @@ bug fix for balls spawn, make a hitbox face direction of the ball spawn position
 add walk anim
 add weapon swing
 
-make grist have pickup sound
+add grist 3d model
+
 make grist have a counter in top of screen
 make counter come down when you pick grist up
 make sylladex cards show the type if you pick up item

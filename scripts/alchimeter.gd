@@ -39,7 +39,7 @@ func purchase(item: String):
 				pass
 			pass
 		instance.type(item)
-		
+		game_manager.grist_change_visual()
 		
 		#instance.set_position(self.global_position)
 		instance.set_position(item_spawn_zone.global_transform.origin)
