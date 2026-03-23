@@ -16,3 +16,6 @@ make item into an item type, based on a ENUM
 
 punch designix for unlocking more items <- EXTRA
 alchemiter <- use grist to make items //
+
+INVENTORY STORAGE
+PUT THE BUNNY BACK IN THE BOX

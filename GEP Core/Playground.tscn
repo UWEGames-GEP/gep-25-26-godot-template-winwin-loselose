@@ -136,7 +136,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4305, 25.4085, -5.90092)
 
 [node name="RigidBody3D" parent="." instance=ExtResource("13_vn1us")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94799, 24.3548, -3.14174)
-num = 0
 
 [node name="alchemiter" parent="." instance=ExtResource("14_x40f1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39731, 27.6105, -2.4932)
