@@ -25,7 +25,6 @@ func _ready() -> void:
 		inventory_slots.push_front(inventory_parent.get_child(i))
 	pass
 
-
 func checker(check_num: int):
 	if items.size() < 6:
 			visual_timer = 1.6
@@ -131,78 +130,69 @@ func _physics_process(delta: float) -> void:
 			inventory_parent.visible = false
 		can_add_item = true
 
-func addItem(itemObj, item_name: String):
-	if can_add_item:
-		if items.size() < 6:
-			itemObj.visible = false
-			game_manager.pickup_sfx.play()
-			visual_timer = 1.6
-			items.append(itemObj)
-			var instance
-			for i in items.size():
-				if inventory_slots.get(i).get_child_count() < 1:
-					instance = sylladex_item.instantiate()
-					#instance.set_position(self.global_position)
-					inventory_slots.get(i).add_child(instance)
-					instance.slot_num = i
-					slots_children.append(instance)
-					inventory_slots.get(i).get_child(0).anim_player.play("sylladex_move")
-					pass
-					match (items.get(i).obj_name):
-						"unbreakable_katana": 
-							instance.icon_tex.texture = instance.katana_texture
-									#change colour of grist here
-							pass
-						"lil_cal":
-							instance.icon_tex.texture = instance.lil_cal_texture
-									#change colour of grist here
-							pass
-						"lil_seb":
-							instance.icon_tex.texture = instance.lil_seb_texture
-									#change colour of girs there
-							pass
-					#instance = null
-			
-			instance = null
-	pass
+func ui_fix():
+	for slot in inventory_slots:
+		for child in slot.get_children():
+			child.queue_free()
+	slots_children.clear()
 	
+	for i in range(items.size()):
+		var item_node = items[i]
+		var instance = sylladex_item.instantiate()
+		
+		inventory_slots[i].add_child(instance)
+		slots_children.append(instance)
+		
+		match item_node.obj_name:
+			"unbreakable_katana":
+				instance.icon_tex.texture = instance.katana_texture
+			"lil_cal":
+				instance.icon_tex.texture = instance.lil_cal_texture
+			"lil_seb":
+				instance.icon_tex.texture = instance.lil_seb_texture
+
+		if instance.has_node("AnimationPlayer"):
+			instance.anim_player.play("sylladex_move")
+
+func addItem(itemObj, item_name: String):
+	if can_add_item and items.size() < 6:
+		if itemObj.get_child_count() > 0:
+			itemObj.get_child(0).set_monitoring(false)
+		itemObj.visible = false
+		items.append(itemObj)
+		game_manager.pickup_sfx.play()
+		visual_timer = 1.6
+		ui_fix()
+		
+func remove_held_item():
+	if can_add_item and selected_card != null and items.size() > selected_card:
+		spawnInFrontOfPlayer()
+		var item_to_remove = items[selected_card]
+		items.remove_at(selected_card)
+		
+		item_to_remove.visible = true
+		item_to_remove.reparent(get_tree().root)
+		item_to_remove.global_position = newPosition
+		item_to_remove.rotation = cam_rotation
+		
+		node_unfreeze(item_to_remove)
+		ui_fix()
+		#
+		
+func node_unfreeze(item_to_remove: Node):
+	if item_to_remove is RigidBody3D:
+			item_to_remove.get_child(0).set_monitoring(true)
+			item_to_remove.freeze = false
+			item_to_remove.sleeping = false
+			item_to_remove.linear_velocity = Vector3.ZERO
+			item_to_remove.angular_velocity = Vector3.ZERO
+	item_to_remove.get_child(0).set_monitoring(true)
+			
 func spawnInFrontOfPlayer():
 	game_manager.drop_sfx.play()
 	var rng = RandomNumberGenerator.new()
 	var randomization = Vector3(rng.randf_range(0.1, 0.5), rng.randf_range(0.1, 0.5), rng.randf_range(0.1, 0.5))
 	newPosition = ($"../Camroot/h/spawn_point".global_position + randomization)
-
-func remove_held_item():
-	spawnInFrontOfPlayer()
-	if held_item != null:
-		held_item.get_child(0).set_monitoring(true)
-	if can_add_item && selected_card != null:
-		for i in items.size():
-			#play drop sfx
-			var item_to_remove
-			if items.find(i) != null:
-				items.find(i) == null
-			item_to_remove = items.get(selected_card)
-			items.remove_at(selected_card)
-			item_to_remove.visible = true
-			if item_to_remove.obj_name != "lil_seb":
-				item_to_remove.freeze = true
-			item_to_remove.rotation = cam_rotation
-			item_to_remove.reparent(get_tree().root)
-			item_to_remove.position = newPosition
-			if item_to_remove.obj_name != "lil_seb":
-				item_to_remove.freeze = false
-
-			break
-		for i in slots_children.size():
-			if slots_children.get(selected_card) != null:
-				slots_children.get(selected_card).queue_free()
-				slots_children.remove_at(selected_card)
-			break
-		#items.sort()
-	else:
-		removeItem()
-	
 	
 func removeItem():
 	spawnInFrontOfPlayer()
@@ -233,25 +223,20 @@ func removeItem():
 	#items.sort()
 
 func removeSelectedUIItem(itemToRemove: int):
-	#play drop sfx
-	print(items.size())
+	if itemToRemove < 0 or itemToRemove >= items.size():
+		return
 	spawnInFrontOfPlayer()
+	var item_node = items[itemToRemove]
+	items.remove_at(itemToRemove)
 	
-	
-	if items.get(itemToRemove) != null:
-		items.get(itemToRemove).reparent(get_tree().root)
-	
-		items.get(itemToRemove).visible = true
-		if items.get(itemToRemove).obj_name != "lil_seb":
-			items.get(itemToRemove).freeze = true
-		items.get(itemToRemove).get_child(0).set_monitoring(true)
-		items.get(itemToRemove).position = newPosition
-		items.get(itemToRemove).rotation = cam_rotation
-		if items.get(itemToRemove).obj_name != "lil_seb":
-			items.get(itemToRemove).freeze = false
+	if item_node != null:
+		item_node.reparent(get_tree().root)
+		item_node.visible = true
+		item_node.global_position = newPosition
+		item_node.rotation = cam_rotation
 		
+		node_unfreeze(item_node)
 		
-		items.remove_at(itemToRemove)
-		slots_children.get(itemToRemove).queue_free()
-		slots_children.remove_at(itemToRemove)
-		#items.sort()
+		if item_node.get_child_count() > 0 and item_node.get_child(0).has_method("set_monitoring"):
+			item_node.get_child(0).set_monitoring(true)
+	ui_fix()

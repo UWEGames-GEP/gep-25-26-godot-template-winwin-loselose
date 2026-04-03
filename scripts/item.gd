@@ -31,6 +31,8 @@ func rigidbody():
 			self.freeze = true
 	else:
 		self.freeze = false
+		
+		
 func _physics_process(delta: float) -> void:
 	if self.get_parent().is_in_group("item_holder"):
 		self.position = Vector3(0,0,0)
