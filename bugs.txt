@@ -1,2 +1,21 @@
-if items spawn on one another, doesnt spawn.
-when selecting item, it drops it fucking weird
+when selecting item, it drops it fucking weird <- it is a time bug, find a solution if you really care. just use time
+
+TO DO -====
+bug fix for balls spawn, make a hitbox face direction of the ball spawn position from the player position as an anchor. <- use rotation, if collides, repeat until it can find a new place to spawn it based on randomization 
+
+
+add walk anim
+add weapon swing
+icon bug when picking up, i dont fucking know <- look at unity
+bug if dropping weapons too fast/overlapping weapons still
+make random grist spawn, spawns random value and colour
+
+clean up code
+
+make item into an item type, based on a ENUM
+
+punch designix for unlocking more items <- EXTRA
+alchemiter <- use grist to make items //
+
+INVENTORY STORAGE
+PUT THE BUNNY BACK IN THE BOX

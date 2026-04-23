@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c15yn2gn3mpyr"]
 
-[ext_resource type="Script" uid="uid://ho0nv1cg0neg" path="res://scripts/inventory.gd" id="1_i02ac"]
+[ext_resource type="Script" uid="uid://c15rwxk1fmpct" path="res://scripts/inventory.gd" id="1_i02ac"]
 
 [node name="inventory" type="Node" groups=["inventory"]]
 script = ExtResource("1_i02ac")

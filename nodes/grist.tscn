@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://casdah7m37my5"]
+
+[ext_resource type="Script" uid="uid://dvwtqyxshkfuu" path="res://scripts/grist.gd" id="1_vil8i"]
+[ext_resource type="PackedScene" uid="uid://be2phf3iyu4j4" path="res://nodes/grist_model.tscn" id="2_fnim6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dn116"]
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_txjow"]
+radius = 0.2
+
+[node name="grist" type="RigidBody3D"]
+disable_mode = 2
+can_sleep = false
+freeze_mode = 1
+script = ExtResource("1_vil8i")
+
+[node name="Area3D" type="Area3D" parent="." groups=["grist"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0352018, 0)
+disable_mode = 2
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1.2365, 0, 0, 0, 1.2365, 0, 0, 0, 1.2365, 0, 0, 0)
+shape = SubResource("SphereShape3D_dn116")
+
+[node name="grist" parent="Area3D" instance=ExtResource("2_fnim6")]
+transform = Transform3D(0.274645, 0, 0, 0, 0.274645, 0, 0, 0, 0.274645, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_txjow")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]

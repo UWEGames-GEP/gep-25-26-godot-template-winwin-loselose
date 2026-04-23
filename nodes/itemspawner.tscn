@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4exvbnn4466x"]
+[gd_scene load_steps=3 format=3 uid="uid://cxwm23wejptml"]
 
-[ext_resource type="Script" uid="uid://dtlile4nwsli3" path="res://scripts/itemspawner.gd" id="1_4sy3w"]
+[ext_resource type="Script" uid="uid://dh27w2vp12x7u" path="res://scripts/itemspawner.gd" id="1_4sy3w"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_4sy3w"]
 

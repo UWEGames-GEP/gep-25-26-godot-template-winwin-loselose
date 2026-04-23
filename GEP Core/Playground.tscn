@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ngecyo0pmaed"]
+[gd_scene load_steps=15 format=3 uid="uid://ngecyo0pmaed"]
 
 [ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="1_rfwro"]
 [ext_resource type="Material" uid="uid://c1u020xb37y6n" path="res://addons/ThirdPersonTemplate/Environments/Materials/Blue.material" id="2_wyl2q"]
@@ -8,10 +8,11 @@
 [ext_resource type="Material" uid="uid://cpk3jtowelhgh" path="res://addons/ThirdPersonTemplate/Environments/Materials/PingkGrid.material" id="6_vn1us"]
 [ext_resource type="Material" uid="uid://bquocw2a8n271" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreyGrid.material" id="7_x40f1"]
 [ext_resource type="PackedScene" uid="uid://cu1nu0wj8tmp2" path="res://nodes/player.tscn" id="8_rfwro"]
-[ext_resource type="PackedScene" uid="uid://d4h2x55pwh6wv" path="res://nodes/dirk_level.tscn" id="9_wyl2q"]
-[ext_resource type="Script" uid="uid://cpr2hhtswc8p8" path="res://scripts/game_manager.gd" id="10_dtxi8"]
-[ext_resource type="PackedScene" uid="uid://b4exvbnn4466x" path="res://nodes/itemspawner.tscn" id="11_iywyu"]
-[ext_resource type="PackedScene" uid="uid://dfo3mjnk2g45" path="res://nodes/menu.tscn" id="12_sc53d"]
+[ext_resource type="PackedScene" uid="uid://x2a2sjvvh48i" path="res://nodes/dirk_level.tscn" id="9_wyl2q"]
+[ext_resource type="PackedScene" uid="uid://bpo1sqdrbia2l" path="res://nodes/game_manager.tscn" id="10_vn1us"]
+[ext_resource type="PackedScene" uid="uid://cxwm23wejptml" path="res://nodes/itemspawner.tscn" id="11_iywyu"]
+[ext_resource type="PackedScene" uid="uid://casdah7m37my5" path="res://nodes/grist.tscn" id="13_vn1us"]
+[ext_resource type="PackedScene" uid="uid://ckkrdc5ay5slx" path="res://nodes/alchemiter.tscn" id="14_x40f1"]
 
 [sub_resource type="Environment" id="Environment_qyvd4"]
 background_mode = 2
@@ -128,10 +129,13 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.2796
 [node name="dirk_level" parent="." instance=ExtResource("9_wyl2q")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
-[node name="game_manager" type="Node3D" parent="." groups=["game_manager"]]
-script = ExtResource("10_dtxi8")
+[node name="game_manager" parent="." instance=ExtResource("10_vn1us")]
 
 [node name="Itemspawner" parent="." instance=ExtResource("11_iywyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4305, 25.4085, -5.90092)
 
-[node name="Menu" parent="." instance=ExtResource("12_sc53d")]
+[node name="RigidBody3D" parent="." instance=ExtResource("13_vn1us")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94799, 24.3548, -3.14174)
+
+[node name="alchemiter" parent="." instance=ExtResource("14_x40f1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39731, 27.6105, -2.4932)

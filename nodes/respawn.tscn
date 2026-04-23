@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh3gkfxfx3x55"]
+[gd_scene load_steps=3 format=3 uid="uid://do113ovla1rin"]
 
-[ext_resource type="Script" uid="uid://ckocnceil3q5d" path="res://scripts/respawn.gd" id="1_ci2bj"]
+[ext_resource type="Script" path="res://scripts/respawn.gd" id="1_ci2bj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ww4ox"]
 

@@ -22,5 +22,6 @@ func _on_options_btn_pressed() -> void:
 	pass # Replace with function body
 
 func _on_play_btn_pressed() -> void:
+	self.queue_free()
 	gamemanager.state = enums.GAMEPLAY
 	gamemanager.stateChanged()

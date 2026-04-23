@@ -1,8 +1,8 @@
 extends Node3D
 
 var timer = 0
-var base_grist = load("res://nodes/item.tscn")
-
+var base_item = load("res://nodes/item.tscn")
+var base_grist = load("res://nodes/grist.tscn")
 #PUT MATERIALS HERE
 
 func _physics_process(delta: float) -> void:

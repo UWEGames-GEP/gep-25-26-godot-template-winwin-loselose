@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckkrdc5ay5slx"]
+
+[ext_resource type="Script" uid="uid://b11d337of1adv" path="res://scripts/alchimeter.gd" id="1_4q4xk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rhxol"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4q4xk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rhxol"]
+size = Vector3(0.976563, 0.657104, 1)
+
+[node name="alchemiter" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.315217, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_rhxol")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.575679, 0, 0, 0, 1.70329, 0, 0, 0, 0.575679, -0.367641, 1.14375, 0)
+mesh = SubResource("CylinderMesh_4q4xk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["alchemiter"]]
+collision_layer = 513
+collision_mask = 513
+script = ExtResource("1_4q4xk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117188, 0.155701, 0)
+shape = SubResource("BoxShape3D_rhxol")
+
+[node name="spawn_zone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.346999, 0.93666, 0)
